@@ -1,4 +1,5 @@
-FROM vookimedlo/ubuntu-qt:5.10_gcc_xenial
+FROM oldfrostdragon/qt-5.7-xenial-docker:latest
+#FROM vookimedlo/ubuntu-qt:5.10_gcc_xenial
 WORKDIR /tmp/
 # XXX possible bug
 RUN apt-get update && apt-get install build-essential libxtst-dev libx11-dev libxinerama-dev -y
