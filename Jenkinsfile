@@ -6,9 +6,19 @@ pipeline {
     }
     stages {
         stage('Clone sources') {
-            sh 'cd /tmp && git clone http://github.com/metacoma/silverkey.git'
-            sh 'cd /tmp/silverkey && git checkout cppqt'
-            sh 'cd /tmp/silverkey/src && qmake && make'
+            steps {
+                git (
+                    url: "http://github.com/metacoma/silverkey.git"
+                    branch: "cppqt"
+                )
+                /*
+                sh 'cd /tmp && git clone http://github.com/metacoma/silverkey.git'
+                sh 'cd /tmp/silverkey && git checkout cppqt'
+                sh 'cd /tmp/silverkey/src && qmake && make'
+                */
+                sh 'pwd'
+                sh 'ls' 
+            }
         }
     }
 }
