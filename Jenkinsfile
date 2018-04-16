@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'ubuntu:xenial' }
+        docker { image 'vookimedlo/ubuntu-qt:5.10_clang_xenial' }
     }
     stages {
         stage('Build') {
             steps {
-                sh 'lsb_release -a'
+                sh 'id'
             }
         }
     }
