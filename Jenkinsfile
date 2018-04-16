@@ -11,18 +11,22 @@ pipeline {
                     url: "http://github.com/metacoma/silverkey.git",
                     branch: "cppqt"
                 )
+           }
+        }
+        stage('Qmake') {
+            steps {
                 dir('silverkey/src') {
-                    sh 'qmake'
+                    sh 'qmake -makefile'
+                }
+            } 
+        }
+        stage('Qmake') {
+            steps {
+                dir('silverkey/src') {
                     sh 'make'
                 }
-                /*
-                sh 'cd /tmp && git clone http://github.com/metacoma/silverkey.git'
-                sh 'cd /tmp/silverkey && git checkout cppqt'
-                sh 'cd /tmp/silverkey/src && qmake && make'
-                */
-                sh 'pwd'
-                sh 'ls' 
-            }
+            } 
         }
+        
     }
 }
