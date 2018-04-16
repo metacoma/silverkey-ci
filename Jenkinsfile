@@ -11,10 +11,21 @@ pipeline {
                     url: "http://github.com/metacoma/silverkey.git",
                     branch: "cppqt"
                 )
-                sh "find"
-              
-              
-           }
-        }
+            }
+       }
+       stage('qmake') {
+            steps {
+                dir('src') {
+                    sh 'qmake'
+                }
+            }
+       } 
+       stage('make') {
+            steps {
+                dir('src') {
+                    sh 'make'
+                }
+            }
+       } 
     }
 }
