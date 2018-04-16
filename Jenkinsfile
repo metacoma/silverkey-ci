@@ -1,10 +1,10 @@
 pipeline {
+    checkout scm
     agent {
       dockerfile {
         filename 'build-linux.Dockerfile'
         dir '.'
-        label 'latest'
-       }
+      } 
      }
     stages {
         stage('Build') {
