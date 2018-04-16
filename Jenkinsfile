@@ -6,8 +6,10 @@ pipeline {
     }
     stages {
         stage('Clone sources') {
-                git url: 'https://github.com/metacoma/silverkey.git'
-                
+                 git(
+       url: 'https://github.com/metacoma/silverkey.git',
+       branch: 'cppqt'
+    )
         }
     }
 }
