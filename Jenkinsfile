@@ -1,7 +1,8 @@
 pipeline {
-    checkout scm
+    
     agent {
       dockerfile {
+        dockerfile true
         filename 'build-linux.Dockerfile'
         dir '.'
       } 
