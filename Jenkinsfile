@@ -16,6 +16,8 @@ pipeline {
         stage('qmake') {
             steps {
                 dir('silverkey/src') {
+                    sh 'pwd'
+                    sh 'ls'
                     sh 'qmake -makefile'
                 }
             } 
