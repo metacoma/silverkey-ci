@@ -1,7 +1,12 @@
 pipeline {
+    
     agent {
-        docker { image 'vookimedlo/ubuntu-qt:5.10_clang_xenial' }
-    }
+      dockerfile {
+        dockerfile true
+        filename 'build-linux.Dockerfile'
+        dir '.'
+      } 
+     }
     stages {
         stage('Build') {
             steps {
