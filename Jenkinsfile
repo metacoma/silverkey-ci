@@ -13,14 +13,14 @@ pipeline {
                 )
            }
         }
-        stage('Qmake') {
+        stage('qmake') {
             steps {
                 dir('silverkey/src') {
                     sh 'qmake -makefile'
                 }
             } 
         }
-        stage('Qmake') {
+        stage('make') {
             steps {
                 dir('silverkey/src') {
                     sh 'make'
