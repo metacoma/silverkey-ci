@@ -1,8 +1,10 @@
     
 pipeline {
         agent {
-               dockerfile true
+            dockerfile {
+               label 'master'
             }
+         }
     stages {
         stage('Clone sources') {
             steps {
