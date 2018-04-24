@@ -2,13 +2,28 @@ pipeline {
   agent none
 
   stages {
-    stage('Clone sources') {
+    stage('Build') {
       parallel {
-        stage('Linux') {
+        stage('linux') {
           agent {
             dockerfile {
               label 'master'
             }
+          }
+          steps {
+            git (
+              url: "http://github.com/metacoma/silverkey.git",
+              branch: "cppqt"
+            )
+            dir('src') {
+              sh 'qmake'
+              sh 'make'
+            }
+          }
+        }
+        stage('osx') {
+          agent {
+            label 'mac-slave'
           }
           steps {
             git (
