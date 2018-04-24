@@ -10,7 +10,7 @@ RUN apt-get install -y libcurl4-openssl-dev
 USER jenkins
 RUN git clone https://github.com/Robot/robot
 WORKDIR /tmp/robot
-RUN git checkout -b a19be1863405fa4dd5c970946d0f3f59d06b74f1
+RUN git checkout a19be1863405fa4dd5c970946d0f3f59d06b74f1
 RUN make build
 USER root
 RUN make install
