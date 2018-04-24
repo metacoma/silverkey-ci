@@ -12,8 +12,8 @@ pipeline {
           }
           steps {
             git (
-              url: "http://github.com/metacoma/silverkey.git",
-              branch: "cppqt"
+              url: "$GIT_URL",
+              branch: "$GIT_BRANCH"
             )
             dir('src') {
               sh 'qmake'
@@ -27,8 +27,8 @@ pipeline {
           }
           steps {
             git (
-              url: "http://github.com/metacoma/silverkey.git",
-              branch: "cppqt"
+              url: "$GIT_URL",
+              branch: "$GIT_URL"
             )
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
