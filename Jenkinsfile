@@ -32,9 +32,6 @@ pipeline {
           agent {
             label 'mac-slave'
           }
-          environment {
-            JOB_GIT_URL = "/tmp/silverkey-build-dir-${env.BUILD_NUMBER}"
-          }
           steps {
             git (
               url: "$JOB_GIT_URL",
@@ -43,6 +40,11 @@ pipeline {
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
               sh 'make'
+            }
+          }
+          post {
+            always {
+              cleanWs()
             }
           }
         }
