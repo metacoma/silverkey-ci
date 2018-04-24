@@ -1,44 +1,27 @@
-    
 pipeline {
-        agent {
+  agent none
+
+  stages {
+    stage('Clone sources') {
+      parallel {
+        stage('Linux') {
+          agent {
             dockerfile {
-               label 'master'
+              label 'master'
             }
-         }
-    stages {
-        stage('Clone sources') {
-            steps {
-                git (
-                    url: "http://github.com/metacoma/silverkey.git",
-                    branch: "cppqt"
-                )
+          }
+          steps {
+            git (
+              url: "http://github.com/metacoma/silverkey.git",
+              branch: "cppqt"
+            )
+            dir('src') {
+              sh 'qmake'
+              sh 'make'
             }
-       }
-       stage('qmake') {
-         
-            steps {
-                dir('src') {
-                    sh 'qmake'
-                }
-            }
-       } 
-       stage('make') {
-           steps {
-                dir('src') {
-                    sh 'make'
-                }
-            }
-       } 
-    }
-    /*
-    post { 
-        failure { 
-            step([$class: 'GitHubIssueNotifier',
-      issueAppend: true,
-      issueLabel: '',
-      issueTitle: '$JOB_NAME $BUILD_DISPLAY_NAME failed'])
+          }
         }
+      }
     }
-    */
-   
+  }
 }
