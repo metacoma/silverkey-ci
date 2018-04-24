@@ -31,7 +31,7 @@ pipeline {
               branch: "cppqt"
             )
             dir('src') {
-              sh 'qmake'
+              sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
               sh 'make'
             }
           }
