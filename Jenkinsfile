@@ -35,7 +35,7 @@ pipeline {
           steps {
             checkout(
               [$class: 'GitSCM',
-                branches: [[name: '*/${env.JOB_GIT_BRANCH}']],
+                branches: [[name: "*/${JOB_GIT_BRANCH}"]],
                 doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'http://github.com/metacoma/silverkey']]])
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
