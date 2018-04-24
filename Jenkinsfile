@@ -33,8 +33,8 @@ pipeline {
               sh 'make'
               sh 'mv ${JOB_QT_APP} ${STAGE_ARTIFACT}'
             }
+            archiveArtifacts 'src/${STAGE_ARTIFACT}'
           }
-          archiveArtifacts 'src/${STAGE_ARTIFACT}'
         }
         stage('osx') {
           environment {
@@ -54,8 +54,8 @@ pipeline {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
               sh 'make'
               sh 'mv ${JOB_QT_APP} ${STAGE_ARTIFACT}'
+              archiveArtifacts 'src/${STAGE_ARTIFACT}'
             }
-            archiveArtifacts 'src/${STAGE_ARTIFACT}'
           }
         }
       }
