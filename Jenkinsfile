@@ -1,6 +1,12 @@
 pipeline {
   agent none
 
+  environment {
+    JOB_GIT_URL = "https://github.com/metacoma/silverkey"
+    JOB_GIT_BRANCH = "cppqt"
+  }
+
+
   stages {
     stage('Build') {
       parallel {
@@ -12,8 +18,8 @@ pipeline {
           }
           steps {
             git (
-              url: "$GIT_URL",
-              branch: "$GIT_BRANCH"
+              url: "$JOB_GIT_URL",
+              branch: "$JOB_GIT_BRANCH"
             )
             dir('src') {
               sh 'qmake'
@@ -27,8 +33,8 @@ pipeline {
           }
           steps {
             git (
-              url: "$GIT_URL",
-              branch: "$GIT_URL"
+              url: "$JOB_GIT_URL",
+              branch: "$JOB_GIT_URL"
             )
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
