@@ -4,6 +4,7 @@ pipeline {
   environment {
     JOB_GIT_URL = "https://github.com/metacoma/silverkey"
     JOB_GIT_BRANCH = "cppqt"
+    JOB_QT_APP = "silverkey-qt"
   }
 
 
@@ -11,6 +12,11 @@ pipeline {
     stage('Build') {
       parallel {
         stage('linux') {
+          environment {
+            STAGE_ARCH = "x64_86"
+            STAGE_OS = "linux"
+            STAGE_ARTIFACT = "${JOB_QT_APP}-${STAGE_OS}-${STAGE_ARCH}"
+          }
           agent {
             dockerfile {
               reuseNode true
@@ -25,10 +31,17 @@ pipeline {
             dir('src') {
               sh 'qmake'
               sh 'make'
+              sh 'mv ${JOB_QT_APP} ${STAGE_ARTIFACT}"
             }
           }
+          archiveArtifacts 'src/${STAGE_ARTIFACT}'
         }
         stage('osx') {
+          environment {
+            STAGE_ARCH = "x64_86"
+            STAGE_OS = "osx"
+            STAGE_ARTIFACT = "${JOB_QT_APP}-${STAGE_OS}-${STAGE_ARCH}"
+          }
           agent {
             label 'mac-slave'
           }
@@ -40,7 +53,9 @@ pipeline {
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
               sh 'make'
+              sh 'mv ${JOB_QT_APP} ${STAGE_ARTIFACT}"
             }
+            archiveArtifacts 'src/${STAGE_ARTIFACT}'
           }
         }
       }
