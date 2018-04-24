@@ -1,13 +1,11 @@
     
 pipeline {
-    node('master') { 
-
-    agent {
-      dockerfile true
-      label 'slave'
-    }
+    
     stages {
         stage('Clone sources') {
+            agent {
+               dockerfile true
+            }
             steps {
                 git (
                     url: "http://github.com/metacoma/silverkey.git",
@@ -16,6 +14,9 @@ pipeline {
             }
        }
        stage('qmake') {
+           agent {
+               dockerfile true
+            }
             steps {
                 dir('src') {
                     sh 'qmake'
@@ -23,6 +24,9 @@ pipeline {
             }
        } 
        stage('make') {
+            agent {
+               dockerfile true
+            }
             steps {
                 dir('src') {
                     sh 'make'
