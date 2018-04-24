@@ -2,7 +2,7 @@ pipeline {
     
     agent {
       dockerfile true
-      
+      label 'slave'
     }
     stages {
         stage('Clone sources') {
