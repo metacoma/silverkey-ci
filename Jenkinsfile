@@ -33,10 +33,10 @@ pipeline {
             label 'mac-slave'
           }
           steps {
-            git (
-              url: "$JOB_GIT_URL",
-              branch: "$JOB_GIT_URL"
-            )
+            checkout(
+              [$class: 'GitSCM',
+                branches: [[name: '*/master']],
+                doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'http://github.com/metacoma/silerkey']]])
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
               sh 'make'
