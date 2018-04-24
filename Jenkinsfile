@@ -13,6 +13,7 @@ pipeline {
         stage('linux') {
           agent {
             dockerfile {
+              reuseNode true
               label 'master'
             }
           }
@@ -30,6 +31,9 @@ pipeline {
         stage('osx') {
           agent {
             label 'mac-slave'
+          }
+          environment {
+            JOB_GIT_URL = "/tmp/silverkey-build-dir-${env.BUILD_NUMBER}"
           }
           steps {
             git (
