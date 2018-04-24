@@ -38,9 +38,7 @@ pipeline {
         }
         stage('osx') {
           environment {
-            STAGE_ARCH = "x64_86"
-            STAGE_OS = "osx"
-            STAGE_ARTIFACT = "${JOB_QT_APP}-${STAGE_OS}-${STAGE_ARCH}"
+            STAGE_ARTIFACT = "${JOB_QT_APP}.app"
           }
           agent {
             label 'mac-slave'
