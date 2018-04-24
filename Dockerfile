@@ -3,7 +3,10 @@ FROM oldfrostdragon/qt-5.7-xenial-docker:latest
 WORKDIR /tmp/
 # XXX possible bug
 USER root
-RUN apt-get update &&  apt-get install build-essential libxtst-dev libx11-dev libxinerama-dev libcurlpp-dev libcurl4-nss-dev libcurl4-openssl-dev -y
+RUN apt-get purge -y libcurl3 libcurl3-gnutls
+RUN apt-get update && apt-get install --upgrade build-essential libxtst-dev libx11-dev libxinerama-dev libcurlpp-dev libcurl4-openssl-dev -y
+RUN apt-get install -y libcurl4-nss-dev
+RUN apt-get install -y libcurl4-openssl-dev
 USER jenkins
 RUN git clone https://github.com/Robot/robot
 WORKDIR /tmp/robot
