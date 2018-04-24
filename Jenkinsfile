@@ -1,7 +1,7 @@
-node('master') { 
     
 pipeline {
-    
+    node('master') { 
+
     agent {
       dockerfile true
       label 'slave'
