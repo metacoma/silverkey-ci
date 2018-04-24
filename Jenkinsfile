@@ -1,3 +1,5 @@
+node('master') { 
+    
 pipeline {
     
     agent {
@@ -40,4 +42,4 @@ pipeline {
     */
     
 }
-k
+}
