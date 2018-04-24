@@ -28,6 +28,7 @@ pipeline {
             }
        } 
     }
+    /*
     post { 
         failure { 
             step([$class: 'GitHubIssueNotifier',
@@ -36,5 +37,7 @@ pipeline {
       issueTitle: '$JOB_NAME $BUILD_DISPLAY_NAME failed'])
         }
     }
+    */
     
 }
+k
