@@ -42,11 +42,6 @@ pipeline {
               sh 'make'
             }
           }
-          post {
-            always {
-              deleteDir()
-            }
-          }
         }
       }
     }
