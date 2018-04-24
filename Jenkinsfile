@@ -2,7 +2,7 @@
 pipeline {
         agent {
             dockerfile {
-               label 'docker'
+               label 'master'
             }
          }
     stages {
