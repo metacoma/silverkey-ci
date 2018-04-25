@@ -38,7 +38,7 @@ pipeline {
         }
         stage('osx') {
           environment {
-            STAGE_ARTIFACT = "${JOB_QT_APP}.app"
+            STAGE_ARTIFACT = "${JOB_QT_APP}.app/*"
           }
           agent {
             label 'mac-slave'
