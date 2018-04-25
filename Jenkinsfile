@@ -31,9 +31,9 @@ pipeline {
             dir('src') {
               sh 'qmake'
               sh 'make'
-              sh 'mv ${JOB_QT_APP} ${STAGE_ARTIFACT}'
+              sh "mv -v ${JOB_QT_APP} ${STAGE_ARTIFACT}"
             }
-            archiveArtifacts 'src/${STAGE_ARTIFACT}'
+            archiveArtifacts "src/${STAGE_ARTIFACT}"
           }
         }
         stage('osx') {
