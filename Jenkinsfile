@@ -51,7 +51,8 @@ pipeline {
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
               sh 'make'
-              archiveArtifacts 'src/${STAGE_ARTIFACT}'
+
+              archiveArtifacts "${STAGE_ARTIFACT}"
             }
           }
         }
