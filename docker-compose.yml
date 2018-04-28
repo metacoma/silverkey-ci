@@ -53,6 +53,10 @@ services:
     environment:
       - VIRTUAL_HOST=nseha.linkpc.net
       - VIRTUAL_PORT=8080
+    ports:
+      - 0.0.0.0:50000:50000
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
       - silverkey-infra
 
