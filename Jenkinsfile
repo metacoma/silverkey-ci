@@ -53,7 +53,7 @@ pipeline {
               sh 'make'
               sh '/usr/local/Cellar/qt/5.10.1/bin/macdeployqt ${STAGE_ARTIFACT}'
 
-              archiveArtifacts "${JOB_QT_APP}.app"
+              archiveArtifacts "${STAGE_ARTIFACT}"
             }
           }
         }
