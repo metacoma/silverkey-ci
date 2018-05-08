@@ -51,7 +51,7 @@ pipeline {
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
               sh 'make'
-              sh '/usr/local/Cellar/qt/5.10.1/bin/macdeployqt ${STAGE_ARTIFACT}'
+              sh '/usr/local/Cellar/qt/5.10.1/bin/macdeployqt ${JOB_QT_APP}.app'
 
               archiveArtifacts "${STAGE_ARTIFACT}"
             }
