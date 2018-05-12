@@ -30,7 +30,7 @@ pipeline {
             )
             dir('src') {
               sh 'qmake'
-              sh 'make'
+              sh 'make -j4'
               sh "mv -v ${JOB_QT_APP} ${STAGE_ARTIFACT}"
             }
             archiveArtifacts "src/${STAGE_ARTIFACT}"
@@ -50,7 +50,7 @@ pipeline {
                 doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: "${JOB_GIT_URL}"]]])
             dir('src') {
               sh '/usr/local/Cellar/qt/5.10.1/bin/qmake'
-              sh 'make'
+              sh 'make -j4'
               sh '/usr/local/Cellar/qt/5.10.1/bin/macdeployqt ${JOB_QT_APP}.app'
 
               archiveArtifacts "${STAGE_ARTIFACT}"
