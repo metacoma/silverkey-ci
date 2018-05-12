@@ -16,7 +16,7 @@ USER jenkins
 RUN git clone https://github.com/Robot/robot
 WORKDIR /tmp/robot
 RUN git checkout a19be1863405fa4dd5c970946d0f3f59d06b74f1
-RUN make build
+RUN make -j4 build
 USER root
 RUN make install
 WORKDIR /tmp
