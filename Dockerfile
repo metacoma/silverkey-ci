@@ -2,7 +2,14 @@ FROM oldfrostdragon/qt-5.7-xenial-docker:latest
 WORKDIR /tmp/
 USER root
 RUN apt-get purge -y libcurl3 libcurl3-gnutls
-RUN apt-get update && apt-get install --upgrade git build-essential libxtst-dev libx11-dev libxinerama-dev libcurlpp-dev libcurl4-openssl-dev rapidjson-dev -y
+RUN apt-get update && apt-get install -y --upgrade    \
+  git build-essential                                 \
+  libxtst-dev                                         \
+  libx11-dev                                          \
+  libxinerama-dev                                     \
+  libcurlpp-dev                                       \
+  libcurl4-openssl-dev                                \
+  rapidjson-dev
 RUN apt-get install -y libcurl4-nss-dev
 RUN apt-get install -y libcurl4-openssl-dev patchelf
 USER jenkins
